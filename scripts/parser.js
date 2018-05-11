@@ -13,7 +13,7 @@ function getSalariesByGeo() {
     step: function(row) {
       const index = parseInt(row.data[0][`CODGEO`]);
       if (!isNaN(index)) {
-        data[index] = row.data[0][`SNHM14`];
+        data['0'+index] = row.data[0][`SNHM14`];
         $('#table-content').append('<tr><th scope="row">' + index + '</th><td>' + row.data[0][`SNHM14`] + '</td></tr>')
       }
     },
@@ -30,7 +30,7 @@ function getSalariesByGeo() {
 	function getResultsElectionDep(codeDep){		
 		$.ajax({
 			type: "GET" ,
-			url: "/xml/elections/" + codeDep + "com.xml" ,
+			url: "/data/xml/elections/" + codeDep + "com.xml" ,
 			dataType: "xml" ,
 			success: function(xml) {
 				villes = new Object();
@@ -48,10 +48,12 @@ function getSalariesByGeo() {
 		var candidat = new Object();
 		$(xml).find('Candidat').each(function() {
 			var name = $(this).find('NomPsn').text();
-			candidat[name] = {nom: name, vote: parseInt($(this).find('NbVoix').text()), salaire: data[cityCode]};
-			if(totalVote[name] == undefined)
-				totalVote[name] = 0;
-			totalVote[name] += parseInt($(this).find('NbVoix').text());
+      if (data[cityCode] !== undefined) {
+        candidat[name] = {nom: name, vote: parseInt($(this).find('NbVoix').text()), salaire: parseInt(data[cityCode])};
+        if(totalVote[name] === undefined)
+          totalVote[name] = 0;
+        totalVote[name] += parseInt($(this).find('NbVoix').text());
+      }
 		});				
 		villes[cityCode] = candidat;
 	}

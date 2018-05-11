@@ -13,9 +13,16 @@
   <body>
     <div class="jumbotron">
       <h1>Vote by region</h1>
-      <p>...</p>
-      
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Voir</a></p>
+      <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Code Geo</th>
+          <th scope="col">Salaire Moyen</th>
+        </tr>
+      </thead>
+      <tbody id="table-content">
+      </tbody>
+    </table>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="scripts/PapaParse-4.4.0/papaparse.js"></script>

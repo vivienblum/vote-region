@@ -7,6 +7,7 @@ function getSalariesByGeo() {
       const index = parseInt(row.data[0][`CODGEO`]);
       if (!isNaN(index)) {
         data[index] = row.data[0][`SNHM14`];
+        $('#table-content').append('<tr><th scope="row">' + index + '</th><td>' + row.data[0][`SNHM14`] + '</td></tr>')
       }
     },
     complete: function() {
@@ -18,5 +19,5 @@ function getSalariesByGeo() {
 
 
 $(document).ready(function() {  
-  console.log(getSalariesByGeo())
+  let data = getSalariesByGeo();  
 });

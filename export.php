@@ -1,4 +1,5 @@
 <?php
-  $name = "thomas";
-  echo "<h1>bonjour ".$name."</h1>";
+  $xml = $_POST['xml'];
+  $file = 'data.xml';
+  file_put_contents($file, $xml);
 ?>

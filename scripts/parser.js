@@ -73,6 +73,12 @@ function calculateMoy(codeDep){
 		}
 	}
 	resultsDep[codeDep] = somme;
+  // TODO : construire l'XML et l'envoyer en param de cette fonction
+  sendXMLFile("Je suis de l'XML");
+}
+
+function sendXMLFile(xml) {
+  $.post('export.php', {xml: xml});
 }
 
 $(document).ready(function() {  

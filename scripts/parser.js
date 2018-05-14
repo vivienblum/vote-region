@@ -78,7 +78,9 @@ function calculateMoy(codeDep){
 }
 
 function sendXMLFile(xml) {
-  $.post('export.php', {xml: xml});
+  $.post('export.php', {xml: xml}, function() {
+    $('#export-container').append('<a href="data.xml" download>Export</a>')
+  });
 }
 
 $(document).ready(function() {  

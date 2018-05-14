@@ -18,15 +18,11 @@ function getSalariesByGeo() {
 		},
 		complete: function() {
 			var dep = ["075" , "091" , "092" , "093" , "094" , "095" , "077", "078"];
-			console.log(data);	
 			dep.forEach(function(elm) {
 				getResultsElectionDep(elm);
 			 });		
-			 console.log(resultsReg);  
-			 console.log(resultsDep);  
 		}
 	})
-  return data;
 }
 
 function getResultsElectionDep(codeDep){		
@@ -80,5 +76,5 @@ function calculateMoy(codeDep){
 }
 
 $(document).ready(function() {  
-  let data = getSalariesByGeo();  
+	getSalariesByGeo();  
 });

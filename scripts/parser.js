@@ -3,6 +3,7 @@ var totalVote = new Object();
 var villes = new Object();	
 var resultsDep = new Object();	
 var resultsReg = new Object();	
+var dep = ["075" , "091" , "092" , "093" , "094" , "095" , "077", "078"];
 const data = [];
 
 function getSalariesByGeo() {
@@ -17,7 +18,6 @@ function getSalariesByGeo() {
 			}
 		},
 		complete: function() {
-			var dep = ["075" , "091" , "092" , "093" , "094" , "095" , "077", "078"];
 			dep.forEach(function(elm) {
 				getResultsElectionDep(elm);
 			 });		
@@ -69,7 +69,7 @@ function calculateMoy(codeDep){
 			//Par region				
 			if(resultsReg[departement[codeDep][elm][obj]['nom']] == undefined)
 				resultsReg[departement[codeDep][elm][obj]['nom']] = 0;
-			resultsReg[departement[codeDep][elm][obj]['nom']] += departement[codeDep][elm][obj]['vote']*departement[codeDep][elm][obj]['salaire']/totalVote[departement[codeDep][elm][obj]['nom']];
+			resultsReg[departement[codeDep][elm][obj]['nom']] += (departement[codeDep][elm][obj]['vote']*departement[codeDep][elm][obj]['salaire']/totalVote[departement[codeDep][elm][obj]['nom']])/dep.length;
 		}
 	}
 	resultsDep[codeDep] = somme;

@@ -14,6 +14,7 @@ function getSalariesByGeo() {
 			const index = parseInt(row.data[0]['CODGEO']);
 			if (!isNaN(index)) {
 				data['0'+index] = row.data[0]['SNHM14'];
+				$('#table-content').append('<tr><th scope="row">' + index + '</th><td>' + row.data[0]['SNHM14'] + '</td></tr>')
 			}
 		},
 		complete: function() {
@@ -72,37 +73,28 @@ function calculateMoy(codeDep){
 		}
 	}
 	resultsDep[codeDep] = somme;
-  //google.charts.load('current', {packages: ['corechart', 'bar']});
-  //google.charts.setOnLoadCallback(drawBasic);
-  drawBasic();
+  google.charts.load('current', {packages: ['corechart', 'bar']});
+  google.charts.setOnLoadCallback(drawBasic);
+  //drawBasic();
   // TODO : construire l'XML et l'envoyer en param de cette fonction
   sendXMLFile("Je suis de l'XML");
 }
 
-$(document).ready(function() {  
-	getSalariesByGeo();  
-});
-
-/**
-** Export XML
-**/
 function sendXMLFile(xml) {
   $.post('export.php', {xml: xml}, function() {
     $('#export-button').text('Export')
   });
 }
 
-<<<<<<< HEAD
 function drawBasic() {
-      //console.log(resultsDep['075'].nom);
-      console.log("heho");
-      var data = google.visualization.arrayToDataTable([
-         ['Element', 'Votes', { role: 'style' }],
-         ['Copper', 8.94, '#b87333'],            // RGB value
-         ['Silver', 10.49, 'silver'],            // English color name
-         ['Gold', 19.30, 'gold'],
-         ['Platinum', 21.45, 'color: #e5e4e2' ], // CSS-style declaration
-      ]);
+      let dataToDisplay = [];
+
+      dataToDisplay.push(['Element', 'Votes', { role: 'style' }]);
+      $.each(resultsDep['094'], function(index, value) {
+        console.log(value);
+        dataToDisplay.push([index, value, '#e5e4e2']);
+      }); 
+    var data = google.visualization.arrayToDataTable(dataToDisplay);
 
       var options = {
         title: 'Motivation Level Throughout the Day',
@@ -127,64 +119,10 @@ function drawBasic() {
 
 
 
-=======
-var entete = function(){
-
-   	var annee = 2017;
-	var tour = 1;
-	var type = 'presidentielle';
-	var region = 'Ile de France'
-	var description = 'Document XML retraçant les résultats de vote des candidat présents à l\'élection ' + type + ' au tour ' + tour + ' en ' + annee + 'suivant les salaires des votants en ' + region + '.';
-
-
-	var xmlString = '<?xml version="1.0" encoding="UTF-8"?>';
-	xmlString += '<Election xsi:noNamespaceSchemaLocation="poste.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">';
-	xmlString += '<Scrutin>';
-	xmlString += '<Annee>' + annee + '</Annee>';
-	xmlString += '<NumTour>' + tour + '</NumTour>';
-	xmlString += '<Type>' + type + '</Type>';
-	xmlString += '</Scrutin>';
-	xmlString += '<Description>' + description + '</Description>';
-	xmlString += '<Region>' + region + '</Region>';
-	//xmlString += '</Election>';
-
-	return xmlString;
-
-};
-
-var body = function(){
-
-	var xmlString = '<Departements>';
-	var i = 0
-
-	for (i = 0; i < dep.lenght; i++){
-		xmlString += '<Departement>';
-		xmlString += '<CodeDep>' + dep[i] + '</CodeDep>';
-		for(var p in resultsDep[dep[i]]){
-			xmlString += p.toString();
-		}
-
-		xmlString += '</Departement>';
-	}
-
-	xmlString += '</Departements>';
-
-	return xmlString;
-}
-
-
-var results = [ ]
-var xml = entete();
-xml += body();
-
-/*var oParser = new DOMParser();
-var oDOM = oParser.parseFromString(xml, "text/xml");*/
-
-//console.log(oDOM)
->>>>>>> ed18bfa0403daf9382105cbe4ff669d6261c5dc4
 
 
 $(document).ready(function() {  
   $("#table-content").hide(); 
 	getSalariesByGeo();  
 });
+

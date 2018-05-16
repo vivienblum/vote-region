@@ -116,8 +116,9 @@ var entete = function(){
 var body = function(){
 
 	var xmlString = '<Departements>';
+	var i = 0
 
-	/*for (int i = 0; i < dep.lenght; i++){
+	for (i = 0; i < dep.lenght; i++){
 		xmlString += '<Departement>';
 		xmlString += '<CodeDep>' + dep[i] + '</CodeDep>';
 		for(var p in resultsDep[dep[i]]){
@@ -125,7 +126,7 @@ var body = function(){
 		}
 
 		xmlString += '</Departement>';
-	}*/
+	}
 
 	xmlString += '</Departements>';
 

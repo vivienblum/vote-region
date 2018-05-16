@@ -138,8 +138,8 @@ var results = [ ]
 var xml = entete();
 xml += body();
 
-var oParser = new DOMParser();
-var oDOM = oParser.parseFromString(xml, "text/xml");
+/*var oParser = new DOMParser();
+var oDOM = oParser.parseFromString(xml, "text/xml");*/
 
 //console.log(oDOM)
 

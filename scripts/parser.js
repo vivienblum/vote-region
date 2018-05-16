@@ -122,7 +122,7 @@ var body = function(){
 		xmlString += '<Departement>';
 		xmlString += '<CodeDep>' + dep[i] + '</CodeDep>';
 		for(var p in resultsDep[dep[i]]){
-			console.log(p)
+			xmlString += p;
 		}
 
 		xmlString += '</Departement>';

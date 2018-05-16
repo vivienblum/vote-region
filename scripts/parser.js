@@ -2,8 +2,9 @@ var departement = new Object();
 var totalVote = new Object();
 var villes = new Object();	
 var resultsDep = new Object();	
-var resultsReg = new Object();	
+var resultsReg = new Object();
 var dep = ["075" , "091" , "092" , "093" , "094" , "095" , "077", "078"];
+var depDisplay = ["091" , "092" , "093" , "094" , "095" , "077", "078"];
 const data = [];
 
 function getSalariesByGeo() {
@@ -88,13 +89,18 @@ function sendXMLFile(xml) {
 
 function drawBasic() {
       let dataToDisplay = [];
+  
+      const codeDepDisplay = $('#code-dep-input').val();
 
       dataToDisplay.push(['Element', 'Votes', { role: 'style' }]);
-      $.each(resultsDep['094'], function(index, value) {
-        console.log(value);
-        dataToDisplay.push([index, value, '#e5e4e2']);
+      
+      $.each(resultsDep[codeDepDisplay], function(index, value) {
+        // TODO generate color
+         dataToDisplay.push([index, value, '#e5e4e2']);
       }); 
-    var data = google.visualization.arrayToDataTable(dataToDisplay);
+      
+      var data = google.visualization.arrayToDataTable(dataToDisplay);
+    
 
       var options = {
         title: 'Motivation Level Throughout the Day',
@@ -115,14 +121,15 @@ function drawBasic() {
         document.getElementById('chart_div'));  
 
       chart.draw(data, options);
-    }
-
-
+  }
 
 
 
 $(document).ready(function() {  
   $("#table-content").hide(); 
 	getSalariesByGeo();  
+  depDisplay.forEach((index) => {
+    $('#code-dep-input').append('<option value="'+ index +'">'+ index +'</option>')
+  })
 });
 

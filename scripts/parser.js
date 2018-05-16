@@ -141,7 +141,7 @@ xml += body();
 var oParser = new DOMParser();
 var oDOM = oParser.parseFromString(xml, "text/xml");
 
-console.log(oDOM)
+//console.log(oDOM)
 
 
 $(document).ready(function() {  

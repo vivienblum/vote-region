@@ -14,7 +14,6 @@ function getSalariesByGeo() {
 			const index = parseInt(row.data[0]['CODGEO']);
 			if (!isNaN(index)) {
 				data['0'+index] = row.data[0]['SNHM14'];
-				$('#table-content').append('<tr><th scope="row">' + index + '</th><td>' + row.data[0]['SNHM14'] + '</td></tr>')
 			}
 		},
 		complete: function() {
@@ -86,10 +85,11 @@ $(document).ready(function() {
 **/
 function sendXMLFile(xml) {
   $.post('export.php', {xml: xml}, function() {
-    $('#export-container').append('<a href="data.xml" download>Export</a>')
+    $('#export-button').text('Export')
   });
 }
 
+<<<<<<< HEAD
 var entete = function(){
 
    	var annee = 2017;
@@ -142,3 +142,9 @@ var oParser = new DOMParser();
 var oDOM = oParser.parseFromString(xml, "text/xml");
 
 console.log(oDOM)
+
+
+$(document).ready(function() {  
+  $("#table-content").hide(); 
+	getSalariesByGeo();  
+});

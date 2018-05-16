@@ -77,12 +77,68 @@ function calculateMoy(codeDep){
   sendXMLFile("Je suis de l'XML");
 }
 
+$(document).ready(function() {  
+	getSalariesByGeo();  
+});
+
+/**
+** Export XML
+**/
 function sendXMLFile(xml) {
   $.post('export.php', {xml: xml}, function() {
     $('#export-container').append('<a href="data.xml" download>Export</a>')
   });
 }
 
-$(document).ready(function() {  
-	getSalariesByGeo();  
-});
+var entete = function(){
+
+   	var annee = 2017;
+	var tour = 1;
+	var type = 'presidentielle';
+	var region = 'Ile de France'
+	var description = 'Document XML retraçant les résultats de vote des candidat présents à l\'élection ' + type + ' au tour ' + tour + ' en ' + annee + 'suivant les salaires des votants en ' + region + '.';
+
+
+	var xmlString = '<?xml version="1.0" encoding="UTF-8"?>';
+	xmlString += '<Election xsi:noNamespaceSchemaLocation="poste.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">';
+	xmlString += '<Scrutin>';
+	xmlString += '<Annee>' + annee + '</Annee>';
+	xmlString += '<NumTour>' + tour + '</NumTour>';
+	xmlString += '<Type>' + type + '</Type>';
+	xmlString += '</Scrutin>';
+	xmlString += '<Description>' + description + '</Description>';
+	xmlString += '<Region>' + region + '</Region>';
+	//xmlString += '</Election>';
+
+	return xmlString;
+
+};
+
+var body = function(){
+
+	var xmlString = '<Departements>';
+
+	for (int i = 0; i < dep.lenght; i++){
+		xmlString += '<Departement>';
+		xmlString += '<CodeDep>' + dep[i] + '</CodeDep>';
+		for(var p in resultsDep[dep[i]]){
+
+		}
+
+		xmlString += '</Departement>';
+	}
+
+	xmlString += '</Departements>';
+
+	return "";
+}
+
+
+var results = [ ]
+var xml = entete();
+xml += body();
+
+var oParser = new DOMParser();
+var oDOM = oParser.parseFromString(xml, "text/xml");
+
+console.log(oDOM)

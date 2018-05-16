@@ -14,6 +14,7 @@
     <div class="jumbotron">
       <h1>Vote by region</h1>
       <div id="export-container">
+        <a href="data.xml" id="export-button" download></a>
       </div>
       <table class="table">
       <thead>

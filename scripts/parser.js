@@ -84,7 +84,7 @@ function sendXMLFile(xml) {
 }
 
 $(document).ready(function() {  
-  $(.table-content).hide(); 
+  $("#table-content").hide(); 
 	getSalariesByGeo();  
 });
 

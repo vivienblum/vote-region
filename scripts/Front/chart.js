@@ -2,8 +2,8 @@
 google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(drawBasic);
 
-function drawBasic(data) {
- 
+function drawBasic(resultsDep) {
+ alert(resultsDep);
       var data = google.visualization.arrayToDataTable([
          ['Element', 'Votes', { role: 'style' }],
          ['Copper', 8.94, '#b87333'],            // RGB value

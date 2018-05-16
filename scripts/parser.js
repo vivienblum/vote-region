@@ -89,7 +89,6 @@ function sendXMLFile(xml) {
   });
 }
 
-<<<<<<< HEAD
 var entete = function(){
 
    	var annee = 2017;

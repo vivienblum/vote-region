@@ -19,5 +19,6 @@ function getSalariesByGeo() {
 
 
 $(document).ready(function() {  
-  let data = getSalariesByGeo();  
+  let data = getSalariesByGeo(); 
+  $(.table-content).hide(); 
 });

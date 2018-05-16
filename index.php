@@ -27,9 +27,15 @@
       </tbody>
     </table>
     </div>
+    <div id="chart_div" style="width: 900px; height: 500px;">
+
+
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="scripts/PapaParse-4.4.0/papaparse.js"></script>
     <script src="scripts/parser.js"></script>
+    <script src="scripts/Front/chart.js"></script>
     
   </body>
 </html>

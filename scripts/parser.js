@@ -130,7 +130,7 @@ var body = function(){
 
 	xmlString += '</Departements>';
 
-	return "";
+	return xmlString;
 }
 
 

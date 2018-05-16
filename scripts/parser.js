@@ -117,7 +117,7 @@ var body = function(){
 
 	var xmlString = '<Departements>';
 
-	for (int i = 0; i < dep.lenght; i++){
+	/*for (int i = 0; i < dep.lenght; i++){
 		xmlString += '<Departement>';
 		xmlString += '<CodeDep>' + dep[i] + '</CodeDep>';
 		for(var p in resultsDep[dep[i]]){
@@ -125,7 +125,7 @@ var body = function(){
 		}
 
 		xmlString += '</Departement>';
-	}
+	}*/
 
 	xmlString += '</Departements>';
 

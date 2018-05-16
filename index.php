@@ -35,7 +35,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="scripts/PapaParse-4.4.0/papaparse.js"></script>
     <script src="scripts/parser.js"></script>
-    <script src="scripts/Front/chart.js"></script>
+   <!-- <script src="scripts/Front/chart.js"></script> -->
     
   </body>
 </html>

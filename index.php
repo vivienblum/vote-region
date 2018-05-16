@@ -16,16 +16,6 @@
       <div id="export-container">
         <a href="data.xml" id="export-button" download></a>
       </div>
-      <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Code Geo</th>
-          <th scope="col">Salaire Moyen</th>
-        </tr>
-      </thead>
-      <tbody id="table-content">
-      </tbody>
-    </table>
     </div>
     <div id="chart_div" style="width: 900px; height: 500px;">
 

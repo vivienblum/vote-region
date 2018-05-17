@@ -14,7 +14,7 @@
   <body>
     <h1>Salaires et votes</h1>
     <div id="export-container">
-      <a id="export-button" class="btn btn-primary" href="data.xml" role="button" disabled>Loading ...</a>
+      <a id="export-button" class="btn btn-primary" href="data.xml" role="button" download disabled>Loading ...</a>
     </div>
 
     <select id="code-dep-input" onChange="drawBasic();" class="form-control">

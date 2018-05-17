@@ -5,7 +5,19 @@ var resultsDep = new Object();
 var resultsReg = new Object();
 var dep = ["075" , "091" , "092" , "093" , "094" , "095" , "077", "078"];
 var depDisplay = ["091" , "092" , "093" , "094" , "095" , "077", "078"];
-var colorCandidat = {FILLON: "blue", HAMON: "red"};
+var colorCandidat = {
+  "FILLON": "#0d47a1", 
+  "HAMON": "#ef5350", 
+  "DUPONT-AIGNAN": "#311b92", 
+  "LE PEN": "#1a237e",
+  "MACRON": "#5c6bc0",
+  "ARTHAUD": "#4caf50",
+  "POUTOU": "#b71c1c",
+  "CHEMINADE": "#795548",
+  "LASSALLE": "#f4511e",
+  "MÉLENCHON": "#f9a825",
+  "ASSELINEAU": "#aeea00",
+};
 const data = [];
 
 function getSalariesByGeo() {

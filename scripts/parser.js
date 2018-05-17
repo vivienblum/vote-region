@@ -5,6 +5,7 @@ var resultsDep = new Object();
 var resultsReg = new Object();
 var dep = ["075" , "091" , "092" , "093" , "094" , "095" , "077", "078"];
 var depDisplay = ["091" , "092" , "093" , "094" , "095" , "077", "078"];
+var colorCandidat = {FILLON: "blue", HAMON: "red"};
 const data = [];
 
 function getSalariesByGeo() {
@@ -97,7 +98,11 @@ function drawBasic() {
       
       $.each(resultsDep[codeDepDisplay], function(index, value) {
         // TODO generate color
-         dataToDisplay.push([index, value, '#e5e4e2']);
+        let color = colorCandidat[index];
+        if (color === undefined) {
+          color = '#e5e4e2';
+        }
+         dataToDisplay.push([index, value, color]);
       }); 
       
       var data = google.visualization.arrayToDataTable(dataToDisplay);

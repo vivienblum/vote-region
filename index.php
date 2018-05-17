@@ -14,7 +14,7 @@
     <div class="jumbotron">
       <h1>Vote by region</h1>
       <div id="export-container">
-        <a href="data.xml" id="export-button" download></a>
+        <a id="export-button" class="btn btn-primary" href="data.xml" role="button" disabled>Loading ...</a>
       </div>
     </div>
     <select id="code-dep-input" onChange="drawBasic();">

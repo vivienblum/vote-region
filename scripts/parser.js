@@ -82,8 +82,9 @@ function calculateMoy(codeDep){
 }
 
 function sendXMLFile(xml) {
-  $.post('export.php', {xml: xml}, function() {
-    $('#export-button').text('Export')
+  $.post('export.php', {xml: xml}, function(event) {
+    $('#export-button').text('Export');
+    $('#export-button').removeAttr("disabled");
   });
 }
 
@@ -103,9 +104,9 @@ function drawBasic() {
     
 
       var options = {
-        title: 'Motivation Level Throughout the Day',
+        title: 'Salaires des votants',
         hAxis: {
-          title: 'Time of Day',
+          title: 'Candidats',
           format: 'h:mm a',
           viewWindow: {
             min: [7, 30, 0],
@@ -113,7 +114,7 @@ function drawBasic() {
           }
         },
         vAxis: {
-          title: 'Rating (scale of 1-10)'
+          title: 'Salaires'
         }
       };
 

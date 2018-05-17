@@ -5,6 +5,7 @@ var resultsDep = new Object();
 var resultsReg = new Object();
 var dep = ["075" , "091" , "092" , "093" , "094" , "095" , "077", "078"];
 var depDisplay = ["091" , "092" , "093" , "094" , "095" , "077", "078"];
+var colorCandidat = {FILLON: "blue", HAMON: "red"};
 const data = [];
 
 function getSalariesByGeo() {
@@ -82,8 +83,9 @@ function calculateMoy(codeDep){
 }
 
 function sendXMLFile(xml) {
-  $.post('export.php', {xml: xml}, function() {
-    $('#export-button').text('Export')
+  $.post('export.php', {xml: xml}, function(event) {
+    $('#export-button').text('Export');
+    $('#export-button').removeAttr("disabled");
   });
 }
 
@@ -96,16 +98,20 @@ function drawBasic() {
       
       $.each(resultsDep[codeDepDisplay], function(index, value) {
         // TODO generate color
-         dataToDisplay.push([index, value, '#e5e4e2']);
+        let color = colorCandidat[index];
+        if (color === undefined) {
+          color = '#e5e4e2';
+        }
+         dataToDisplay.push([index, value, color]);
       }); 
       
       var data = google.visualization.arrayToDataTable(dataToDisplay);
     
 
       var options = {
-        title: 'Motivation Level Throughout the Day',
+        title: 'Salaires des votants',
         hAxis: {
-          title: 'Time of Day',
+          title: 'Candidats',
           format: 'h:mm a',
           viewWindow: {
             min: [7, 30, 0],
@@ -113,7 +119,7 @@ function drawBasic() {
           }
         },
         vAxis: {
-          title: 'Rating (scale of 1-10)'
+          title: 'Salaires'
         }
       };
 

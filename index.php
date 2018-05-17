@@ -9,15 +9,15 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="jumbotron">
-      <h1>Vote by region</h1>
-      <div id="export-container">
-        <a href="data.xml" id="export-button" download></a>
-      </div>
+    <h1>Salaires et votes</h1>
+    <div id="export-container">
+      <a id="export-button" class="btn btn-primary" href="data.xml" role="button" disabled>Loading ...</a>
     </div>
-    <select id="code-dep-input" onChange="drawBasic();">
+
+    <select id="code-dep-input" onChange="drawBasic();" class="form-control">
     </select>
     <div id="chart_div" style="width: 900px; height: 500px;">
 

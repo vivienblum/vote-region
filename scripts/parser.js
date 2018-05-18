@@ -91,7 +91,7 @@ function calculateMoy(codeDep){
   google.charts.setOnLoadCallback(drawBasic);
   //drawBasic();
   // TODO : construire l'XML et l'envoyer en param de cette fonction
-  sendXMLFile("Je suis de l'XML");
+  sendXMLFile(getXML(resultsDep));
 }
 
 function sendXMLFile(xml) {
@@ -109,7 +109,6 @@ function drawBasic() {
       dataToDisplay.push(['Element', 'Votes', { role: 'style' }]);
       
       $.each(resultsDep[codeDepDisplay], function(index, value) {
-        // TODO generate color
         let color = colorCandidat[index];
         if (color === undefined) {
           color = '#e5e4e2';
@@ -136,12 +135,31 @@ function drawBasic() {
       };
 
       var chart = new google.visualization.ColumnChart(
-        document.getElementById('chart_div'));  
+      document.getElementById('chart_div'));  
 
       chart.draw(data, options);
   }
 
-
+function getXML(data) {
+  let xmlData = "";
+  xmlData += "<statistiques>";
+  $.each(resultsDep, function(index, value) {
+    xmlData += "<departement codeDep='" + index + "'>";
+    $.each(resultsDep[index], function(index, value) {
+      xmlData += "<vote>";
+      xmlData += "<candidat>";
+      xmlData += index;
+      xmlData += "</candidat>";
+      xmlData += "<salaire_votants>";
+      xmlData += value;
+      xmlData += "</salaire_votants>";
+      xmlData += "</vote>";
+    });
+    xmlData += "</departement>";
+  });
+  xmlData += "</statistiques>";
+  return xmlData;
+}
 
 $(document).ready(function() {  
   $("#table-content").hide(); 

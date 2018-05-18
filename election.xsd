@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	
+	<xs:simpleType name="civilite">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Homme"/>
+			<xs:enumeration value="Femme"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="candidat">
+		<xs:sequence>
+			<xs:element type="xs:string" name="Nom"/>												
+			<xs:element name="Civilite" type="civilite"/>
+			<xs:element type="xs:string" name="Parti"/>
+			<xs:element type="xs:float" name="SalaireMoy"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="departement">
+		<xs:sequence>
+			<xs:element type="xs:int" name="CodeDep"/>
+			<xs:element name="Candidats">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Candidat" type="candidat" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="Election">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Scrutin">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:int" name="Annee"/>
+							<xs:element type="xs:int" name="NumTour"/>
+							<xs:element type="xs:string" name="Type"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element type="xs:string" name="Description"/>
+				<xs:element name="Sources">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:string" name="Source" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element type="xs:string" name="Region"/>
+				<xs:element name="Departements">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Departement" type="departement" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+</xs:schema>

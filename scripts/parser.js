@@ -5,18 +5,18 @@ var resultsDep = new Object();
 var resultsReg = new Object();
 var dep = ["075" , "091" , "092" , "093" , "094" , "095" , "077", "078"];
 var depDisplay = ["091" , "092" , "093" , "094" , "095" , "077", "078"];
-var colorCandidat = {
-  "FILLON": "#0d47a1", 
-  "HAMON": "#ef5350", 
-  "DUPONT-AIGNAN": "#311b92", 
-  "LE PEN": "#1a237e",
-  "MACRON": "#5c6bc0",
-  "ARTHAUD": "#4caf50",
-  "POUTOU": "#b71c1c",
-  "CHEMINADE": "#795548",
-  "LASSALLE": "#f4511e",
-  "MÉLENCHON": "#f9a825",
-  "ASSELINEAU": "#aeea00",
+var infoCandidat = {
+  "FILLON": {color: "#0d47a1", civilite: "Homme", parti: "Les Républicains"}, 
+  "HAMON": {color: "#ef5350", civilite: "Homme", parti: "Parti Socialiste"}, 
+  "DUPONT-AIGNAN": {color: "#311b92", civilite: "Homme", parti: "Debout la France"}, 
+  "LE PEN": {color: "#1a237e", civilite: "Femme", parti: "Front National"},
+  "MACRON": {color: "#5c6bc0", civilite: "Homme", parti: "En Marche!"},
+  "ARTHAUD": {color: "#4caf50", civilite: "Femme", parti: "Lutte Ouvrière"},
+  "POUTOU": {color: "#b71c1c", civilite: "Homme", parti: "Nouveau Parti Anticapitaliste"},
+  "CHEMINADE": {color: "#795548", civilite: "Homme", parti: "Solidarité et Progrès"},
+  "LASSALLE": {color: "#f4511e", civilite: "Homme", parti: "Résistons !"},
+  "MÉLENCHON": {color: "#f9a825", civilite: "Homme", parti: "La France Insoumise"},
+  "ASSELINEAU": {color: "#aeea00", civilite: "Homme", parti: "Union Populaire Républicaine"},
 };
 const data = [];
 
@@ -89,8 +89,6 @@ function calculateMoy(codeDep){
 	resultsDep[codeDep] = somme;
   google.charts.load('current', {packages: ['corechart', 'bar']});
   google.charts.setOnLoadCallback(drawBasic);
-  //drawBasic();
-  // TODO : construire l'XML et l'envoyer en param de cette fonction
   sendXMLFile(getXML(resultsDep));
 }
 
@@ -109,7 +107,7 @@ function drawBasic() {
       dataToDisplay.push(['Element', 'Votes', { role: 'style' }]);
       
       $.each(resultsDep[codeDepDisplay], function(index, value) {
-        let color = colorCandidat[index];
+        let color = infoCandidat[index].color;
         if (color === undefined) {
           color = '#e5e4e2';
         }
@@ -142,22 +140,37 @@ function drawBasic() {
 
 function getXML(data) {
   let xmlData = "";
-  xmlData += "<statistiques>";
+  xmlData += '<?xml version="1.0" encoding="utf-8"?><Election xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation="election.xsd">';
+  xmlData += "<Scrutin><Annee>2017</Annee><NumTour>1</NumTour><Type>Présidentielle</Type></Scrutin>";
+  xmlData += "<Description>Desc du doc</Description>";
+  xmlData += "<Sources><Source>url</Source></Sources>";
+  xmlData += "<Region>Ile de France</Region>";
+  xmlData += "<Departements>";
   $.each(resultsDep, function(index, value) {
-    xmlData += "<departement codeDep='" + index + "'>";
+    xmlData += "<Departement>";
+    xmlData += "<CodeDep>" + index + "</CodeDep>";
+    xmlData += "<Candidats>";
     $.each(resultsDep[index], function(index, value) {
-      xmlData += "<vote>";
-      xmlData += "<candidat>";
+      xmlData += "<Candidat>";
+      xmlData += "<Nom>";
       xmlData += index;
-      xmlData += "</candidat>";
-      xmlData += "<salaire_votants>";
+      xmlData += "</Nom>";
+      xmlData += "<Civilite>";
+      xmlData += infoCandidat[index].civilite;
+      xmlData += "</Civilite>";
+      xmlData += "<Parti>";
+      xmlData += infoCandidat[index].parti;
+      xmlData += "</Parti>";
+      xmlData += "<SalaireMoy>";
       xmlData += value;
-      xmlData += "</salaire_votants>";
-      xmlData += "</vote>";
+      xmlData += "</SalaireMoy>";
+      xmlData += "</Candidat>";
     });
-    xmlData += "</departement>";
+    xmlData += "</Candidats>";
+    xmlData += "</Departement>";
   });
-  xmlData += "</statistiques>";
+  xmlData += "</Departements>";
+  xmlData += "</Election>";
   return xmlData;
 }
 

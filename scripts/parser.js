@@ -128,7 +128,7 @@ function drawBasic() {
           }
         },
         vAxis: {
-          title: 'Salaires'
+          title: 'Salaires horaires'
         }
       };
 
@@ -142,8 +142,8 @@ function getXML(data) {
   let xmlData = "";
   xmlData += '<?xml version="1.0" encoding="utf-8"?><Election xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation="election.xsd">';
   xmlData += "<Scrutin><Annee>2017</Annee><NumTour>1</NumTour><Type>Présidentielle</Type></Scrutin>";
-  xmlData += "<Description>Desc du doc</Description>";
-  xmlData += "<Sources><Source>url</Source></Sources>";
+  xmlData += "<Description>Moyenne des salaires par votants par département</Description>";
+  xmlData += "<Sources><Source>https://www.data.gouv.fr/fr/datasets/salaire-net-horaire-moyen-selon-la-categorie-socioprofessionnelle-le-sexe-et-lage-en-2014/#_</Source><Source>https://www.interieur.gouv.fr/avotreservice/elections/telechargements/PR2017/resultatsT1/011/</Source></Sources>";
   xmlData += "<Region>Ile de France</Region>";
   xmlData += "<Departements>";
   $.each(resultsDep, function(index, value) {

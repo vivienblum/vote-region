@@ -6,7 +6,11 @@ Nous récupérons différentes données :
 
 -https://www.data.gouv.fr/fr/datasets/salaire-net-horaire-moyen-selon-la-categorie-socioprofessionnelle-le-sexe-et-lage-en-2014/#_ => Le salaire moyen par communes en France au format CSV.
 
+#Utilisation de l'application
 Pour faire fonctionner l'application en local, il faut utiliser un serveur PHP.
 
 La version de production est disponible au lien suivant :
 [Prod](https://vote-region.herokuapp.com/)
+
+#Schéma et fichier d'exemple XML
+Un fichier d'exemple d'export XML est diponible, il se nomme "data.xml" le fichier de schéma XML ou plutot le fichier XSD se nomme "election.xsd".

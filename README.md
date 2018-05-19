@@ -1,5 +1,5 @@
 # vote-region
-Le but de cette Application est de permettre la consultation des salaire moyen des votants en Ile de Franc pour chaque candidats à l'élection présidentielle 2017.
+Le but de cette Application est de permettre la consultation des salaires moyen des votants en Ile de Franc pour chaque candidats à l'élection présidentielle 2017.
 
 Nous récupérons différentes données :
 -https://www.interieur.gouv.fr/avotreservice/elections/telechargements/PR2017/resultatsT1/011/ => les résultats des votes de différents départements de l'île de France, les fichier sont au format XML.

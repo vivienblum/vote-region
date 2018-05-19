@@ -14,3 +14,8 @@ La version de production est disponible au lien suivant :
 
 <strong>#Schéma et fichier d'exemple XML </strong></br>
 Un fichier d'exemple d'export XML est diponible, il se nomme "data.xml" le fichier de schéma XML ou plutot le fichier XSD se nomme "election.xsd".
+
+<strong>#Explication technique</strong></br>
+Le fichier "index.php" est le principal fichier de notre application, nous utilisons la librairie "PapaParse" pour parser les fichiers d'entrées au format CVS. Nous utilisons aussi la libririe javascript gstatic pour afficher nos données sous forme de graphiques. Nous nous aidons aussi avec du Jquery.
+
+Notre fichier de script principal où nous traitons les données se nomme "parser.js".
